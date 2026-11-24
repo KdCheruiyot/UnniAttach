@@ -1,31 +1,19 @@
 package com.dan.backend.dto;
 
 import com.dan.backend.enums.Role;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-public class RegisterRequest {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private Role role;
-
-    public RegisterRequest() {}
-
-    public RegisterRequest(String firstName, String lastName, String email, String password, Role role) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
-
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
-    public Role getRole() { return role; }
-    public void setRole(Role role) { this.role = role; }
+public record RegisterRequest(
+        @NotBlank @Size(max = 80) String firstName,
+        @NotBlank @Size(max = 80) String lastName,
+        @NotBlank @Email @Size(max = 190) String email,
+        @NotBlank @Size(min = 8, max = 72, message = "must be between 8 and 72 characters") String password,
+        @NotNull(message = "must be STUDENT or COMPANY") Role role,
+        @Size(max = 30) String phone,
+        @Size(max = 150) String organization,
+        @Size(max = 60) String registrationNumber,
+        @Size(max = 120) String course) {
+}
