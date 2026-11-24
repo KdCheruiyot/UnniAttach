@@ -1,0 +1,14 @@
+# Copy this file to application-local.properties (it is gitignored), fill in your values,
+# then run with:  SPRING_PROFILES_ACTIVE=local
+# (PowerShell:  $env:SPRING_PROFILES_ACTIVE="local"; .\mvnw.cmd spring-boot:run)
+
+spring.datasource.url=jdbc:mysql://localhost:3306/attaco?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=YOUR_MYSQL_PASSWORD_HERE
+
+# Any random string of 32+ characters, only for local use
+app.jwt.secret=change-me-to-a-long-random-string-for-local-dev-only
+
+# First admin account for local testing
+app.admin.email=admin@local.test
+app.admin.password=ChangeMe123
